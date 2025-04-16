@@ -6,16 +6,11 @@ import datetime
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain.prompts import PromptTemplate
 from gtts import gTTS
-import playsound
+
 import tempfile
 from flask_login import login_required
 
 import time
-import os
-
-# Only import playsound if not running on Render (i.e., running locally)
-if not os.environ.get("RENDER"):
-    import playsound
 
 app = Flask(__name__)
 app.secret_key = '9be8967f3f5464751d17aa6d24262123'  # Change this to a random secret key in production
