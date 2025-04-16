@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - Language Translator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/profile.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Language Translator</h1>
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('index') }}">Translate</a></li>
+                    <li><a href="{{ url_for('profile') }}" class="active">Profile</a></li>
+                    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+        <main>
+            <div class="profile-container">
+                <div class="user-info">
+                    <h2>User Profile</h2>
+                    <div class="info-item">
+                        <span class="label">Username:</span>
+                        <span class="value">{{ username }}</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Email:</span>
+                        <span class="value">{{ email }}</span>
+                    </div>
+                </div>
+                
+                <div class="points-info">
+                    <h2>Points</h2>
+                    <div class="points-display">
+                        <span class="points-value">{{ points }}</span>
+                        <span class="points-label">points</span>
+                    </div>
+                    <div class="gift-card">
+                        <h2>Gift Card</h2>
+                        {% if gift_card %}
+                            <p>🎁 Congratulations! Here's your Google Gift Code:</p>
+                            <div class="gift-code">{{ gift_card }}</div>
+                        {% elif points >= 1000 %}
+                            <p>🎁 Your gift card is being unlocked...</p>
+                        {% else %}
+                            <p>🔒 Reach 1000 points to unlock a Google Gift Card.</p>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="last-claim">
+                        {% if last_claim_date %}
+                            <p>Last claimed: {{ last_claim_date }}</p>
+                        {% else %}
+                            <p>You haven't claimed any points yet.</p>
+                        {% endif %}
+                    </div>
+                    <div class="points-info-text">
+                        <p>You can earn 10 points daily by logging in.</p>
+                        <p>Points reset every 24 hours.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="history-container">
+                <h2>Translation History</h2>
+                {% if translation_history %}
+                    <div class="history-list">
+                        {% for entry in translation_history|reverse %}
+                            <div class="history-item">
+                                <div class="history-header">
+                                    <span class="history-date">{{ entry.date }}</span>
+                                    <span class="history-languages">{{ entry.source_lang }} → {{ entry.target_lang }}</span>
+                                </div>
+                                <div class="history-content">
+                                    <div class="original-text">
+                                        <h4>Original:</h4>
+                                        <p>{{ entry.original_text }}</p>
+                                    </div>
+                                    <div class="translated-text">
+                                        <h4>Translation:</h4>
+                                        <p>{{ entry.translated_text }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <p class="no-history">You haven't made any translations yet.</p>
+                {% endif %}
+            </div>
+        </main>
+    </div>
+</body>
+</html>

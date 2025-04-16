@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+    
+    <title>Language Translator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Language Translator</h1>
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('index') }}" class="active">Translate</a></li>
+                    <li><a href="{{ url_for('profile') }}">Profile</a></li>
+                    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+        <main>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <div class="flash-messages">
+                        {% for message in messages %}
+                            <p>{{ message }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+            
+            <div class="translator-box">
+                <form action="{{ url_for('translate') }}" method="post">
+                    <div class="language-selectors">
+                        <div class="selector">
+                            <label for="source_lang">From:</label>
+                            <select id="source_lang" name="source_lang" required>
+                                <option value="English" {% if source_lang == 'English' %}selected{% endif %}>English</option>
+                                <option value="Spanish" {% if source_lang == 'Spanish' %}selected{% endif %}>Spanish</option>
+                                <option value="French" {% if source_lang == 'French' %}selected{% endif %}>French</option>
+                                <option value="Tamil" {% if source_lang == 'Tamil' %}selected{% endif %}>Tamil</option>
+                                <option value="Italian" {% if source_lang == 'Italian' %}selected{% endif %}>Italian</option>
+                                <option value="Portuguese" {% if source_lang == 'Portuguese' %}selected{% endif %}>Portuguese</option>
+                                <option value="Russian" {% if source_lang == 'Russian' %}selected{% endif %}>Russian</option>
+                                <option value="Japanese" {% if source_lang == 'Japanese' %}selected{% endif %}>Japanese</option>
+                                <option value="Chinese" {% if source_lang == 'Chinese' %}selected{% endif %}>Chinese</option>
+                                <option value="Korean" {% if source_lang == 'Korean' %}selected{% endif %}>Korean</option>
+                            </select>
+                        </div>
+                        
+                        <div class="selector">
+                            <label for="target_lang">To:</label>
+                            <select id="target_lang" name="target_lang" required>
+                                <option value="English" {% if target_lang == 'English' %}selected{% endif %}>English</option>
+                                <option value="Spanish" {% if target_lang == 'Spanish' %}selected{% endif %}>Spanish</option>
+                                <option value="French" {% if target_lang == 'French' %}selected{% endif %}>French</option>
+                                <option value="Tamil" {% if target_lang == 'Tamil' %}selected{% endif %}>Tamil</option>
+                                <option value="Italian" {% if target_lang == 'Italian' %}selected{% endif %}>Italian</option>
+                                <option value="Portuguese" {% if target_lang == 'Portuguese' %}selected{% endif %}>Portuguese</option>
+                                <option value="Russian" {% if target_lang == 'Russian' %}selected{% endif %}>Russian</option>
+                                <option value="Japanese" {% if target_lang == 'Japanese' %}selected{% endif %}>Japanese</option>
+                                <option value="Chinese" {% if target_lang == 'Chinese' %}selected{% endif %}>Chinese</option>
+                                <option value="Korean" {% if target_lang == 'Korean' %}selected{% endif %}>Korean</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="text-areas">
+                        <div class="text-area">
+                            <label for="word">Text to translate:</label>
+                            <textarea id="word" name="word" rows="6" required>{% if original_text %}{{ original_text }}{% endif %}</textarea>
+                        </div>
+                        
+                        {% if translated_text %}
+                        <div class="text-area result">
+                            <label>Translation:</label>
+                            <div class="translation-result">
+                                {{ translated_text }}
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+                    
+                    <button type="submit" class="btn translate-btn">Translate</button>
+                </form>
+            </div>
+
+            {% if audio_file %}
+            <h3>Listen to the translation:</h3>
+            <audio controls autoplay>
+                <source src="{{ url_for('static', filename=audio_file) }}" type="audio/mp3">
+                Your browser does not support the audio element.
+            </audio>
+            {% endif %}
+            
+        </main>
+    </div>
+</body>
+</html>

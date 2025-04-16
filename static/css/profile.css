@@ -1,0 +1,267 @@
+/* Profile Page Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #f5f7fa;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #e1e4e8;
+}
+
+header h1 {
+  color: #333;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+}
+
+nav ul li {
+  margin-left: 20px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #555;
+  font-weight: 500;
+  padding: 8px 12px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: #6e8efb;
+  background-color: rgba(110, 142, 251, 0.1);
+}
+
+nav ul li a.active {
+  color: #6e8efb;
+  background-color: rgba(110, 142, 251, 0.1);
+}
+
+.profile-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.user-info,
+.points-info {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  padding: 30px;
+  flex: 1;
+  min-width: 300px;
+  transition: transform 0.3s ease;
+}
+
+.user-info:hover,
+.points-info:hover {
+  transform: translateY(-5px);
+}
+
+h2 {
+  color: #333;
+  margin-bottom: 20px;
+  font-weight: 600;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 10px;
+}
+
+.info-item {
+  margin-bottom: 15px;
+  display: flex;
+}
+
+.label {
+  font-weight: 500;
+  color: #555;
+  width: 100px;
+}
+
+.value {
+  color: #333;
+}
+
+.points-display {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.points-value {
+  font-size: 48px;
+  font-weight: 700;
+  color: #6e8efb;
+  display: block;
+}
+
+.points-label {
+  font-size: 18px;
+  color: #666;
+}
+
+.last-claim {
+  text-align: center;
+  margin-bottom: 15px;
+  color: #666;
+}
+
+.points-info-text {
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-radius: 5px;
+  margin-top: 15px;
+}
+
+.points-info-text p {
+  margin-bottom: 5px;
+  color: #555;
+}
+
+.history-container {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  padding: 30px;
+  margin-bottom: 30px;
+}
+
+.history-list {
+  margin-top: 20px;
+}
+
+.history-item {
+  border-bottom: 1px solid #eee;
+  padding: 20px 0;
+}
+
+.history-item:last-child {
+  border-bottom: none;
+}
+
+.history-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.history-date {
+  color: #666;
+  font-size: 14px;
+}
+
+.history-languages {
+  background-color: #f0f4ff;
+  color: #6e8efb;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.history-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.original-text,
+.translated-text {
+  flex: 1;
+  min-width: 300px;
+}
+
+.original-text h4,
+.translated-text h4 {
+  color: #555;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.original-text p,
+.translated-text p {
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-radius: 5px;
+  color: #333;
+  line-height: 1.5;
+}
+
+.no-history {
+  text-align: center;
+  color: #666;
+  padding: 20px;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  nav ul {
+    margin-top: 15px;
+  }
+
+  nav ul li {
+    margin: 0 10px;
+  }
+
+  .profile-container {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 10px;
+  }
+
+  .user-info,
+  .points-info,
+  .history-container {
+    padding: 20px 15px;
+  }
+
+  nav ul li {
+    margin: 0 5px;
+  }
+
+  nav ul li a {
+    padding: 6px 8px;
+    font-size: 14px;
+  }
+
+  .history-header {
+    flex-direction: column;
+  }
+
+  .history-languages {
+    align-self: flex-start;
+    margin-top: 5px;
+  }
+}

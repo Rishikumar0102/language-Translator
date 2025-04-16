@@ -1,0 +1,7 @@
+{
+    "cards": [
+        {"code": "GC-1000-A1B2C3", "used": false},
+        {"code": "GC-1000-X9Y8Z7", "used": false},
+        {"code": "GC-1000-M3N4O5", "used": false}
+    ]
+}
