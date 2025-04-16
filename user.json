@@ -116,6 +116,13 @@
                 "target_lang": "Tamil",
                 "original_text": "hello",
                 "translated_text": "\u0bb5\u0ba3\u0b95\u0bcd\u0b95\u0bae\u0bcd \u0b9a\u0bca\u0bb2\u0bcd\u0bb2\u0bc1\u0b99\u0bcd\u0b95\u0bb3\u0bcd (Va\u1e47akkam sollu\u1e45ka\u1e37)"
+            },
+            {
+                "date": "2025-04-16 14:20:20",
+                "source_lang": "English",
+                "target_lang": "Tamil",
+                "original_text": "welcome\r\n",
+                "translated_text": "\u0bb5\u0bb0\u0bc1\u0b95\u0bc8\u0b95\u0bcd\u0b95\u0bc1 \u0bb5\u0bb0\u0bb5\u0bc7\u0bb1\u0bcd\u0baa\u0bc1 (Varugaiku Varavetpu)"
             }
         ]
     },
